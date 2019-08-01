@@ -13,27 +13,31 @@ public class Main {
         WebDriver driver = new ChromeDriver();
         Actions act = new Actions(driver);
 
-        // Set window size to the maximum width and height of the screen,
+        
+        // redirecionar o tramanho da janela
         driver.manage().window().maximize();
-
-        // launch browser and direct it to the URL
+        
+        // ir para URL https://www.rrrgggbbb.com/
         driver.get("https://www.rrrgggbbb.com/");
-
+        
+        // encontrar o elemento com o id=R
         WebElement red_letter = driver.findElement(By.id("R"));
         act.moveToElement(red_letter).perform();
 
-        // Assert if the element is found (background is red and letter colour is black)
+        
+        // verificar se o elemento é encontrado background passa a red  e a letra a black
         bg_color = driver.findElement(By.xpath("//body")).getCssValue("background-color");
         font_color = driver.findElement(By.xpath("//*[@id='R-fill' and @class='black']")).getCssValue("background-color");
         assert (bg_color.equals("rgba(255, 0, 0, 1)")) : "Background color is not red !!";
         assert (font_color.equals("rgba(0, 0, 0, 1)")) : "Font color is not black !!";
 
         Wait();
-
+        // encontrar o elemento com o id=G
+        // green -50 para fazer o over na letra
         WebElement green_letter = driver.findElement(By.id("G"));
         act.moveToElement(green_letter).moveByOffset(-50, 0).perform();
-
-        // Assert if the element is found (background is green and letter colour is black)
+        
+        // verificar se o elemento é encontrado background passa a green e a letra a black
         bg_color = driver.findElement(By.xpath("//body")).getCssValue("background-color");
         font_color = driver.findElement(By.xpath("//*[@id='G-fill' and @class='black']")).getCssValue("background-color");
         assert (bg_color.equals("rgba(255, 0, 0, 1)")) : "Background color is not green !!";
@@ -41,10 +45,11 @@ public class Main {
 
         Wait();
 
+        // encontrar o elemento com o id=B
         WebElement blue_letter = driver.findElement(By.id("B"));
         act.moveToElement(blue_letter).perform();
 
-        // Assert if the element is found (background is red and letter colour is black)
+        // verificar se o elemento é encontrado background passa a blue e a letra a black
         bg_color = driver.findElement(By.xpath("//body")).getCssValue("background-color");
         font_color = driver.findElement(By.xpath("//*[@id='B-fill' and @class='black']")).getCssValue("background-color");
         assert (bg_color.equals("rgba(0, 0, 255, 1)")) : "Background color is not blue !!";
@@ -56,6 +61,7 @@ public class Main {
     }
 
     private static void Wait() {
+        // tempo de para espera entre as ações
         try {
             Thread.sleep(5000);
         } catch (InterruptedException err) {
