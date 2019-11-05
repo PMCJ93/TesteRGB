@@ -130,7 +130,6 @@ public class Main {
 //    }
 
     private static void Wait() {
-        // tempo de para espera entre as ações
         try {
             Thread.sleep(5000);
         } catch (InterruptedException err) {
